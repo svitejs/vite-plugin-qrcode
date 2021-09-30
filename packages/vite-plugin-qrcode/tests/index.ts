@@ -1,9 +1,9 @@
 import { test } from 'uvu';
 import { equal } from 'uvu/assert';
-import { code } from '../src/index';
+import { qrcode } from '../src/index';
 
 test('code', () => {
-	equal(code, '');
+	equal(typeof qrcode(), 'object');
 });
 
 test.run();
