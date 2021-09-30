@@ -1,6 +1,6 @@
 import os from 'os';
 import { AddressInfo } from 'net';
-import { Plugin, ViteDevServer } from 'vite';
+import type { Plugin, ViteDevServer } from 'vite';
 import qr from 'qrcode-terminal';
 
 export function qrcode(): Plugin {
@@ -29,7 +29,7 @@ function logQrcode(server: ViteDevServer) {
 
 	for (const url of networkUrls) {
 		qr.generate(url, { small: true }, (result) => {
-			info(`  ${result.replace(/\n/g, '\n  ')}`);
+			info(`  ${url}\n  ${result.replace(/\n/g, '\n  ')}\n`);
 		});
 	}
 }
