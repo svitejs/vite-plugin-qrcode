@@ -56,7 +56,7 @@ importers:
       tsup: 5.2.1_typescript@4.4.3
       typescript: 4.4.3
 
-  packages/project-template:
+  packages/vite-plugin-qrcode:
     specifiers:
       uvu: ^0.5.1
     devDependencies:

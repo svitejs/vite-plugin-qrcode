@@ -32,7 +32,7 @@ body:
     id: system-info
     attributes:
       label: System Info
-      description: Output of `npx envinfo --system --binaries --browsers --npmPackages "{@svitejs/vite-plugin-qrcode}"`
+      description: Output of `npx envinfo --system --binaries --browsers --npmPackages "{vite-plugin-qrcode}"`
       render: shell
       placeholder: System, Binaries, Browsers
     validations:

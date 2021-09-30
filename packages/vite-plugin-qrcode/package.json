@@ -1,5 +1,5 @@
 {
-  "name": "@svitejs/vite-plugin-qrcode",
+  "name": "vite-plugin-qrcode",
   "version": "0.0.1",
   "license": "MIT",
   "author": "bluwy",

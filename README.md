@@ -1,6 +1,6 @@
-# @svitejs/vite-plugin-qrcode
+# vite-plugin-qrcode
 
-[![npm version](https://img.shields.io/npm/v/@svitejs/vite-plugin-qrcode)](https://www.npmjs.com/package/@svitejs/vite-plugin-qrcode)
+[![npm version](https://img.shields.io/npm/v/vite-plugin-qrcode)](https://www.npmjs.com/package/vite-plugin-qrcode)
 [![CI](https://github.com/svitejs/vite-plugin-qrcode/actions/workflows/ci.yml/badge.svg)](https://github.com/svitejs/vite-plugin-qrcode/actions/workflows/ci.yml)
 
 PROJECT TAGLINE HERE
@@ -8,7 +8,7 @@ PROJECT TAGLINE HERE
 ## Installation
 
 ```bash
-npm install --save-dev @svitejs/vite-plugin-qrcode
+npm install --save-dev vite-plugin-qrcode
 ```
 
 ## Usage
@@ -25,9 +25,9 @@ npm install --save-dev @svitejs/vite-plugin-qrcode
 
 ## Packages
 
-| Package                                                    | Changelog                                             |
-| ---------------------------------------------------------- | ----------------------------------------------------- |
-| [@svitejs/vite-plugin-qrcode](packages/vite-plugin-qrcode) | [Changelog](packages/vite-plugin-qrcode/CHANGELOG.md) |
+| Package                                           | Changelog                                             |
+| ------------------------------------------------- | ----------------------------------------------------- |
+| [vite-plugin-qrcode](packages/vite-plugin-qrcode) | [Changelog](packages/vite-plugin-qrcode/CHANGELOG.md) |
 
 ## Development
 
