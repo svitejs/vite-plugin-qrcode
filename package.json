@@ -47,10 +47,16 @@
       "prettier --write"
     ]
   },
+  "packageManager": "pnpm",
   "engines": {
     "pnpm": "^6.7.0",
     "yarn": "forbidden, use pnpm",
     "npm": "forbidden, use pnpm",
     "node": "^12.20 || ^14.13.1 || >= 16"
+  },
+  "pnpm": {
+    "overrides": {
+      "esbuild": "^0.13.3"
+    }
   }
 }

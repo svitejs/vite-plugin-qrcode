@@ -36,7 +36,6 @@ jobs:
       - name: install
         run: |
           pnpm install --frozen-lockfile --prefer-offline --ignore-scripts
-          node node_modules/esbuild/install.js
       - name: build
         id: build
         run: pnpm run build
@@ -78,7 +77,6 @@ jobs:
       - name: install
         run: |
           pnpm install --frozen-lockfile --prefer-offline --ignore-scripts
-          node node_modules/esbuild/install.js
       - name: build
         run: pnpm run build
       - name: run tests

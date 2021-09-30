@@ -34,7 +34,6 @@ jobs:
       - name: install
         run: |
           pnpm install --frozen-lockfile --prefer-offline --ignore-scripts
-          node node_modules/esbuild/install.js
 
       - name: Creating .npmrc
         run: |
