@@ -56,11 +56,26 @@ importers:
       tsup: 5.2.1_typescript@4.4.3
       typescript: 4.4.3
 
+  packages/playground/basic:
+    specifiers:
+      vite: ^2.6.1
+      vite-plugin-qrcode: workspace:*
+    devDependencies:
+      vite: 2.6.1
+      vite-plugin-qrcode: link:../../vite-plugin-qrcode
+
   packages/vite-plugin-qrcode:
     specifiers:
+      '@types/qrcode-terminal': ^0.12.0
+      qrcode-terminal: ^0.12.0
       uvu: ^0.5.1
+      vite: ^2.6.1
+    dependencies:
+      qrcode-terminal: 0.12.0
     devDependencies:
+      '@types/qrcode-terminal': 0.12.0
       uvu: 0.5.1
+      vite: 2.6.1
 
 packages:
 
@@ -375,6 +390,10 @@ packages:
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
+    dev: true
+
+  /@types/qrcode-terminal/0.12.0:
+    resolution: {integrity: sha512-g0fQKl3IVnUePV8tLkiBTduxAVSZsXts444T2aMfjOEGxd7XoeSIs16/AmRe2NlcJLqbvsOBSXov7dKSo4wigA==}
     dev: true
 
   /@types/semver/6.2.3:
@@ -2342,6 +2361,16 @@ packages:
       thenify-all: 1.6.0
     dev: true
 
+  /nanocolors/0.2.12:
+    resolution: {integrity: sha512-SFNdALvzW+rVlzqexid6epYdt8H9Zol7xDoQarioEFcFN0JHo4CYNztAxmtfgGTVRCmFlEOqqhBpoFGKqSAMug==}
+    dev: true
+
+  /nanoid/3.1.28:
+    resolution: {integrity: sha512-gSu9VZ2HtmoKYe/lmyPFES5nknFrHa+/DT9muUFWFMi6Jh9E1I7bkvlQ8xxf1Kos9pi9o8lBnIOkatMhKX/YUw==}
+    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
+    dev: true
+
   /natural-compare/1.4.0:
     resolution: {integrity: sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=}
     dev: true
@@ -2648,6 +2677,15 @@ packages:
       yaml: 1.10.2
     dev: true
 
+  /postcss/8.3.8:
+    resolution: {integrity: sha512-GT5bTjjZnwDifajzczOC+r3FI3Cu+PgPvrsjhQdRqa2kTJ4968/X9CUce9xttIB0xOs5c6xf0TCWZo/y9lF6bA==}
+    engines: {node: ^10 || ^12 || >=14}
+    dependencies:
+      nanocolors: 0.2.12
+      nanoid: 3.1.28
+      source-map-js: 0.6.2
+    dev: true
+
   /preferred-pm/3.0.3:
     resolution: {integrity: sha512-+wZgbxNES/KlJs9q40F/1sfOd/j7f1O9JaHcW5Dsn3aUUOZg3L2bjpVUcKV2jvtElYfoTuQiNeMfQJ4kwUAhCQ==}
     engines: {node: '>=10'}
@@ -2705,6 +2743,11 @@ packages:
     resolution: {integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==}
     engines: {node: '>=6'}
     dev: true
+
+  /qrcode-terminal/0.12.0:
+    resolution: {integrity: sha512-EXtzRZmC+YGmGlDFbXKxQiMZNwCLEO6BANKXG4iCtSIM0yqc/pappSx3RIKr4r0uh5JsBckOXeKrB3Iz7mdQpQ==}
+    hasBin: true
+    dev: false
 
   /queue-microtask/1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
@@ -2959,6 +3002,11 @@ packages:
       strip-ansi: 6.0.1
       wcwidth: 1.0.1
       yargs: 15.4.1
+    dev: true
+
+  /source-map-js/0.6.2:
+    resolution: {integrity: sha512-/3GptzWzu0+0MBQFrDKzw/DvvMTUORvgY6k6jd/VS6iCR4RDTKWH6v6WPwQoUO8667uQEf9Oe38DxAYWY5F/Ug==}
+    engines: {node: '>=0.10.0'}
     dev: true
 
   /spawndamnit/2.0.0:
@@ -3349,6 +3397,30 @@ packages:
     dependencies:
       spdx-correct: 3.1.1
       spdx-expression-parse: 3.0.1
+    dev: true
+
+  /vite/2.6.1:
+    resolution: {integrity: sha512-rYd+iGMQ+AytWfYBDhIz2upeiseuqrAMwmApJDR40wu12C9MqzemX449nM3FN1Z/FFSV+fMTFz7eMenngVSogA==}
+    engines: {node: '>=12.2.0'}
+    hasBin: true
+    peerDependencies:
+      less: '*'
+      sass: '*'
+      stylus: '*'
+    peerDependenciesMeta:
+      less:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+    dependencies:
+      esbuild: 0.13.3
+      postcss: 8.3.8
+      resolve: 1.20.0
+      rollup: 2.57.0
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: true
 
   /wcwidth/1.0.1:

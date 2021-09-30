@@ -38,6 +38,12 @@ module.exports = {
 	},
 	overrides: [
 		{
+			files: ['packages/playground/**'],
+			env: {
+				browser: true
+			}
+		},
+		{
 			files: ['**/*.svelte'],
 			env: {
 				es6: true,
