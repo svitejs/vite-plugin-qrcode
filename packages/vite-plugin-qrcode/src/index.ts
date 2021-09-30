@@ -8,12 +8,19 @@ export function qrcode(): Plugin {
 		name: 'vite-plugin-qrcode',
 		apply: 'serve',
 		configureServer(server) {
-			let timer: NodeJS.Timeout;
-
-			server.httpServer?.on('listening', () => {
-				clearTimeout(timer);
-				timer = setTimeout(() => logQrcode(server), 0);
-			});
+			const _listen = server.listen;
+			server.listen = function () {
+				// eslint-disable-next-line prefer-rest-params
+				const isRestart = arguments[1] === true;
+				if (!isRestart) {
+					server.httpServer?.on('listening', () => {
+						setTimeout(() => logQrcode(server), 0);
+					});
+				}
+				// @ts-ignore
+				// eslint-disable-next-line prefer-rest-params
+				return _listen.apply(this, arguments);
+			};
 		}
 	};
 }
@@ -29,7 +36,7 @@ function logQrcode(server: ViteDevServer) {
 
 	for (const url of networkUrls) {
 		qr.generate(url, { small: true }, (result) => {
-			info(`  ${url}\n  ${result.replace(/\n/g, '\n  ')}\n`);
+			info(`  ${url}\n  ${result.replace(/\n/g, '\n  ')}`);
 		});
 	}
 }
