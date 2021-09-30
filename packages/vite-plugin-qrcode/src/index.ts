@@ -36,9 +36,13 @@ function logQrcode(server: ViteDevServer) {
 
 	for (const url of networkUrls) {
 		qr.generate(url, { small: true }, (result) => {
-			info(`  ${url}\n  ${result.replace(/\n/g, '\n  ')}`);
+			info(`  ${cyan(url)}\n  ${result.replace(/\n/g, '\n  ')}`);
 		});
 	}
+}
+
+function cyan(str: string): string {
+	return `\x1b[36m${str}\x1b[0m`;
 }
 
 // Referenced from https://github.com/vitejs/vite/blob/77447496704e61cdb68b5788d8d79f19a2d895f1/packages/vite/src/node/logger.ts#L143
