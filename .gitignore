@@ -1,0 +1,29 @@
+# logs and temp
+*.log
+*.cpuprofile
+temp
+*.tmp
+
+# build and dist
+build
+dist
+.svelte
+.svelte-kit
+
+# env and local
+*.local
+.env
+
+# node_modules and pnpm
+node_modules
+pnpm-lock.yaml
+!/pnpm-lock.yaml
+.pnpm-store
+
+# ide
+.idea
+.vscode
+
+# macos
+.DS_Store
+._.DS_Store

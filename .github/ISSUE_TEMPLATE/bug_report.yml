@@ -1,0 +1,50 @@
+name: "\U0001F41E Bug report"
+description: Report an issue with vite-plugin-qrcode
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for participating in vite-plugin-qrcode! Please check for existing reports before creating a new one.
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is. If you intend to submit a PR for this issue, tell us in the description. Thanks!
+      placeholder: Bug description
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Please provide a link to a repo and step by step instructions to reproduce the problem you ran into. If a report is vague (e.g. just a generic error message) and has no reproduction, it may be closed when no reproduction is provided within a reasonable time-frame.
+      placeholder: Reproduction
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: "Please include relevant logs for the issue, eg browser console or terminal output. No screenshots."
+      render: shell
+  - type: textarea
+    id: system-info
+    attributes:
+      label: System Info
+      description: Output of `npx envinfo --system --binaries --browsers --npmPackages "{@svitejs/vite-plugin-qrcode}"`
+      render: shell
+      placeholder: System, Binaries, Browsers
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: Select the severity of this issue
+      options:
+        - annoyance
+        - blocking an upgrade
+        - blocking all usage of vite-plugin-qrcode
+    validations:
+      required: true

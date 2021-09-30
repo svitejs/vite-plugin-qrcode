@@ -1,0 +1,56 @@
+{
+  "name": "vite-plugin-qrcode-monorepo",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "pnpm --dir packages/vite-plugin-qrcode dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test --workspace-concurrency=1",
+    "lint": "eslint --ignore-path .gitignore '**/*.{js,ts,svelte,html,svx,md}'",
+    "lint:fix": "pnpm run lint -- --fix",
+    "format": "prettier --ignore-path .gitignore '**/*.{css,scss,svelte,html,js,ts,svx,md}' --check",
+    "format:fix": "pnpm run format -- --write",
+    "fixup": "run-s lint:fix format:fix",
+    "release": "pnpm run build && pnpm changeset publish",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.17.0",
+    "@changesets/get-github-info": "^0.5.0",
+    "@types/node": "^16.10.1",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "esbuild-node-loader": "^0.3.2",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-html": "^6.2.0",
+    "eslint-plugin-markdown": "^2.2.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-svelte3": "^3.2.1",
+    "esmo": "^0.9.1",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.1",
+    "prettier-plugin-svelte": "^2.4.0",
+    "rimraf": "^3.0.2",
+    "svelte": "^3.43.0",
+    "tsup": "^5.2.1",
+    "typescript": "^4.4.3"
+  },
+  "lint-staged": {
+    "*.{js,ts,svelte,html,md,svx}": "eslint --fix",
+    "*.{css,scss,svelte,html,js,ts,svx,md}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "pnpm": "^6.7.0",
+    "yarn": "forbidden, use pnpm",
+    "npm": "forbidden, use pnpm",
+    "node": "^12.20 || ^14.13.1 || >= 16"
+  }
+}
