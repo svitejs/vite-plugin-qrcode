@@ -29,6 +29,12 @@
     "url": "git+https://github.com/svitejs/vite-plugin-qrcode.git",
     "directory": "packages/vite-plugin-qrcode"
   },
+  "keywords": [
+    "vite-plugin",
+    "vite plugin",
+    "vite",
+    "qrcode"
+  ],
   "bugs": {
     "url": "https://github.com/svitejs/vite-plugin-qrcode/issues"
   },
