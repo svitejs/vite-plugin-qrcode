@@ -15,8 +15,11 @@
     },
     "./package.json": "./package.json"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "dev": "tsup-node --watch src",
+    "dev": "tsup-node --sourcemap --watch src",
     "build": "tsup-node --dts",
     "test": "esmo node_modules/uvu/bin.js tests"
   },
