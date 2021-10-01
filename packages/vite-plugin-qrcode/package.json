@@ -1,5 +1,6 @@
 {
   "name": "vite-plugin-qrcode",
+  "description": "Show QR code on server start",
   "version": "0.0.1",
   "license": "MIT",
   "author": "bluwy",

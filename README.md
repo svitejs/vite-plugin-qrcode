@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/vite-plugin-qrcode)](https://www.npmjs.com/package/vite-plugin-qrcode)
 [![CI](https://github.com/svitejs/vite-plugin-qrcode/actions/workflows/ci.yml/badge.svg)](https://github.com/svitejs/vite-plugin-qrcode/actions/workflows/ci.yml)
 
-PROJECT TAGLINE HERE
+Show QR code on server start.
 
 ## Installation
 
@@ -14,14 +14,20 @@ npm install --save-dev vite-plugin-qrcode
 ## Usage
 
 ```js
-// show em how it's done
+// vite.config.js
+import { qrcode } from 'vite-plugin-qrcode';
+
+export default defineConfig({
+	plugins: [
+		qrcode() // only applies in dev mode
+	]
+});
 ```
 
-## Documentation
-
-- some
-- doc
-- links
+```bash
+# start vite with host to show qrcode
+vite --host
+```
 
 ## Packages
 
