@@ -4,7 +4,6 @@
   "version": "0.0.1",
   "license": "MIT",
   "author": "bluwy",
-  "private": true,
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
