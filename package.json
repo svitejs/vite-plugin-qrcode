@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "pnpm --dir packages/vite-plugin-qrcode dev",
-    "build": "pnpm -r build",
+    "build": "pnpm --dir packages/vite-plugin-qrcode build",
     "test": "pnpm -r test --workspace-concurrency=1",
     "lint": "eslint --ignore-path .gitignore '**/*.{js,ts,svelte,html,svx,md}'",
     "lint:fix": "pnpm run lint -- --fix",
