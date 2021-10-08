@@ -55,7 +55,8 @@
   },
   "pnpm": {
     "overrides": {
-      "esbuild": "^0.13.3"
+      "esbuild": "^0.13.4",
+      "ansi-regex@>2.1.1 <5.0.1": ">=5.0.1"
     }
   }
 }
