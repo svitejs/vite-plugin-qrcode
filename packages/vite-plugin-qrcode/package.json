@@ -49,8 +49,8 @@
   },
   "devDependencies": {
     "@types/qrcode-terminal": "^0.12.0",
-    "rollup": "^2.58.0",
-    "uvu": "^0.5.1",
-    "vite": "^2.6.5"
+    "rollup": "^2.60.2",
+    "uvu": "^0.5.2",
+    "vite": "^2.6.14"
   }
 }
