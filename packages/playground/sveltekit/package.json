@@ -8,7 +8,7 @@
     "preview": "svelte-kit preview"
   },
   "devDependencies": {
-    "@sveltejs/kit": "^1.0.0-next.202",
+    "@sveltejs/kit": "^1.0.0-next.203",
     "svelte": "^3.44.3",
     "vite-plugin-qrcode": "workspace:*"
   },
