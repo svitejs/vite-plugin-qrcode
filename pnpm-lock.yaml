@@ -2,6 +2,8 @@ lockfileVersion: 5.3
 
 overrides:
   ansi-regex@>2.1.1 <5.0.1: ^5.0.1
+  nanoid@3: ^3.1.31
+  node-fetch@2: ^2.6.7
 
 importers:
 
@@ -218,7 +220,9 @@ packages:
     resolution: {integrity: sha512-vm5VgHwrxkMkUjFyn3UVNKLbDp9YMHd3vMf1IyJoa/7B+6VpqmtAaXyDS0zBLfN5bhzVCHrRnj4GcZXXcqrFTw==}
     dependencies:
       dataloader: 1.4.0
-      node-fetch: 2.6.6
+      node-fetch: 2.6.7
+    transitivePeerDependencies:
+      - encoding
     dev: true
 
   /@changesets/get-release-plan/3.0.4:
@@ -2776,8 +2780,8 @@ packages:
       thenify-all: 1.6.0
     dev: true
 
-  /nanoid/3.1.30:
-    resolution: {integrity: sha512-zJpuPDwOv8D2zq2WRoMe1HsfZthVewpel9CAvTfc/2mBD1uUT/agc5f7GHGWXlYkFvi1mVxe4IjvP2HNrop7nQ==}
+  /nanoid/3.2.0:
+    resolution: {integrity: sha512-fmsZYa9lpn69Ad5eDn7FMcnnSR+8R34W9qJEijxYhTbfOWzr22n1QxCMzXLK+ODyW2973V3Fux959iQoUxzUIA==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
     dev: true
@@ -2790,9 +2794,14 @@ packages:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
     dev: true
 
-  /node-fetch/2.6.6:
-    resolution: {integrity: sha512-Z8/6vRlTUChSdIgMa51jxQ4lrw/Jy5SOW10ObaA47/RElsAN2c5Pn8bTgFGWn/ibwzXTE8qwr1Yzx28vsecXEA==}
+  /node-fetch/2.6.7:
+    resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
     engines: {node: 4.x || >=6.0.0}
+    peerDependencies:
+      encoding: ^0.1.0
+    peerDependenciesMeta:
+      encoding:
+        optional: true
     dependencies:
       whatwg-url: 5.0.0
     dev: true
@@ -3090,7 +3099,7 @@ packages:
     resolution: {integrity: sha512-jBDboWM8qpaqwkMwItqTQTiFikhs/67OYVvblFFTM7MrZjt6yMKd6r2kgXizEbTTljacm4NldIlZnhbjr84QYg==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
-      nanoid: 3.1.30
+      nanoid: 3.2.0
       picocolors: 1.0.0
       source-map-js: 1.0.1
     dev: true
