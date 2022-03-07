@@ -9,7 +9,7 @@
     "serve": "vite preview"
   },
   "devDependencies": {
-    "vite": "^2.8.4",
+    "vite": "^2.8.6",
     "vite-plugin-qrcode": "workspace:*"
   }
 }
