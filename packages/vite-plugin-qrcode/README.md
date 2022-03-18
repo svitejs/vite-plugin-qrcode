@@ -51,6 +51,23 @@ vite --host
 
 ```
 
+## Options
+
+### filter
+
+A function that allows you to select addresses to show QR-Codes for in case you have multiple interfaces
+
+Example:
+
+```js
+// vite.config.js
+import { qrcode } from 'vite-plugin-qrcode';
+
+export default defineConfig({
+	plugins: [qrcode({ filter: (ip) => ip === '192.168.1.1' })]
+});
+```
+
 ## License
 
 [MIT](./LICENSE)
