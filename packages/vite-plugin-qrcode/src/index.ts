@@ -3,7 +3,7 @@ import { AddressInfo } from 'net';
 import type { Plugin, ViteDevServer } from 'vite';
 import qr from 'qrcode-terminal';
 
-export function qrcode(): Plugin {
+export function qrcode(options: PluginOptions = {}): Plugin {
 	return {
 		name: 'vite-plugin-qrcode',
 		apply: 'serve',
@@ -14,7 +14,7 @@ export function qrcode(): Plugin {
 				const isRestart = arguments[1] === true;
 				if (!isRestart) {
 					server.httpServer?.on('listening', () => {
-						setTimeout(() => logQrcode(server), 0);
+						setTimeout(() => logQrcode(server, options), 0);
 					});
 				}
 				// @ts-ignore
@@ -25,8 +25,8 @@ export function qrcode(): Plugin {
 	};
 }
 
-function logQrcode(server: ViteDevServer) {
-	const networkUrls = getNetworkUrls(server);
+function logQrcode(server: ViteDevServer, options: PluginOptions) {
+	const networkUrls = getNetworkUrls(server, options);
 
 	if (networkUrls.length === 0) return;
 
@@ -46,7 +46,7 @@ function cyan(str: string): string {
 }
 
 // Referenced from https://github.com/vitejs/vite/blob/77447496704e61cdb68b5788d8d79f19a2d895f1/packages/vite/src/node/logger.ts#L143
-function getNetworkUrls(server: ViteDevServer): string[] {
+function getNetworkUrls(server: ViteDevServer, options: PluginOptions): string[] {
 	const address = server.httpServer?.address();
 
 	if (!isAddressInfo(address)) return [];
@@ -66,7 +66,8 @@ function getNetworkUrls(server: ViteDevServer): string[] {
 				detail &&
 				detail.address &&
 				detail.family === 'IPv4' &&
-				!detail.address.includes('127.0.0.1')
+				!detail.address.includes('127.0.0.1') &&
+				(!options.filter || options.filter(detail.address))
 		)
 		.map((detail) => `${protocol}://${detail.address}:${port}${base}`);
 }
@@ -105,4 +106,20 @@ interface Hostname {
 	host: string | undefined;
 	// resolve to localhost when possible
 	name: string;
+}
+
+export interface PluginOptions {
+	/**
+	 * filter list of shown QR codes. Useful if you have multiple interfaces and only need one
+	 *
+	 *  examples:
+	 *    ip => ip.startsWith('192.')
+	 *    ip => !ip.startsWith('172.)
+	 *    ip => ip === '192.168.1.70'
+	 *
+	 * @param ip {string} ip address
+	 * @returns {boolean}
+	 */
+	// eslint-disable-next-line no-unused-vars
+	filter?: (ip: string) => boolean;
 }
