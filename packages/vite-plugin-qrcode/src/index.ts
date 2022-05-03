@@ -65,7 +65,8 @@ function getNetworkUrls(server: ViteDevServer, options: PluginOptions): string[]
 			(detail) =>
 				detail &&
 				detail.address &&
-				detail.family === 'IPv4' &&
+				// @ts-ignore node18 returns a number
+				(detail.family === 'IPv4' || detail.family === 4) &&
 				!detail.address.includes('127.0.0.1') &&
 				(!options.filter || options.filter(detail.address))
 		)
