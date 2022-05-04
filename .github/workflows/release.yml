@@ -25,12 +25,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-      - run: npm i -g pnpm@6
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
+      - run: corepack enable
       - name: install
         run: |
           pnpm install --frozen-lockfile --prefer-offline --ignore-scripts
