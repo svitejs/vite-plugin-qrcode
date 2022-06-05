@@ -1,5 +1,11 @@
 # vite-plugin-qrcode
 
+## 0.1.1
+
+### Patch Changes
+
+- Support node 18 ([#36](https://github.com/svitejs/vite-plugin-qrcode/pull/36))
+
 ## 0.1.0
 
 ### Minor Changes
