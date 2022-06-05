@@ -3,5 +3,6 @@ export const tsup = {
 	entryPoints: ['src/index.ts'],
 	format: ['esm', 'cjs'],
 	splitting: false,
-	clean: true
+	clean: true,
+	target: 'node14'
 };
