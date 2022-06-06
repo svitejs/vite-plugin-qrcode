@@ -24,7 +24,7 @@
     "test": "tsm node_modules/uvu/bin.js tests"
   },
   "engines": {
-    "node": ">=14"
+    "node": "^14.13.1 || ^16.0.0 || >=18"
   },
   "repository": {
     "type": "git",
