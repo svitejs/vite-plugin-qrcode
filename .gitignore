@@ -3,6 +3,7 @@
 *.cpuprofile
 temp
 *.tmp
+.eslintcache
 
 # build and dist
 build
