@@ -1,5 +1,15 @@
 # vite-plugin-qrcode
 
+## 0.2.0
+
+### Minor Changes
+
+- Drop node 12 support ([#38](https://github.com/svitejs/vite-plugin-qrcode/pull/38))
+
+* Support Vite 3 ([#55](https://github.com/svitejs/vite-plugin-qrcode/pull/55))
+
+- Update filter function to accept full url ([#55](https://github.com/svitejs/vite-plugin-qrcode/pull/55))
+
 ## 0.1.1
 
 ### Patch Changes
