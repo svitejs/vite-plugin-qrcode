@@ -1,5 +1,5 @@
 ---
-'vite-plugin-qrcode': major
+'vite-plugin-qrcode': minor
 ---
 
 Support Vite 3

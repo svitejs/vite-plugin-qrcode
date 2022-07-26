@@ -1,5 +1,5 @@
 ---
-'vite-plugin-qrcode': major
+'vite-plugin-qrcode': minor
 ---
 
 Drop node 12 support
