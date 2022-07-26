@@ -24,32 +24,9 @@ export default defineConfig({
 ```bash
 # start vite with host to show qrcode
 vite --host
-
-  vite v2.6.1 dev server running at:
-
-  > Local:    http://localhost:3000/
-  > Network:  http://192.168.2.169:3000/
-
-  ready in 186ms.
-
-  Visit page on mobile:
-  http://192.168.2.169:3000/
-  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-  █ ▄▄▄▄▄ ██▄▄ ▀▄██▄█ ▄▄▄▄▄ █
-  █ █   █ █▀▄  █▀ ▀ █ █   █ █
-  █ █▄▄▄█ █▄▀ █▄▀ ███ █▄▄▄█ █
-  █▄▄▄▄▄▄▄█▄▀▄█ █▄▀▄█▄▄▄▄▄▄▄█
-  █ ▄██▀ ▄ █▄ █▄ █  ▀██  ▀▀██
-  ██▄▀▀█▀▄▄█▄▀ ▄█▀ ▀█▄▄▀ █▄ █
-  █ ▀ ▄▄ ▄██▄ █ ▀ ▀▄▄▄████▀▄█
-  █ █▀▄█ ▄    ▀█▄▀▄▀▄█▄▀▄▀▄ █
-  █▄█████▄█▀█▄  ▄▀▀ ▄▄▄ █ ███
-  █ ▄▄▄▄▄ █ ██▄ █ █ █▄█ ▄██▄█
-  █ █   █ ██▀ ▀▀▄█▄▄▄  ▄ ▄▀▀█
-  █ █▄▄▄█ █▀█▄█ ██▀▀▄▀▀▀█▄█ █
-  █▄▄▄▄▄▄▄█▄██▄██▄▄▄█▄██▄██▄█
-
 ```
+
+![CLI output](https://user-images.githubusercontent.com/34116392/181014171-aa511838-8122-48cf-ad9c-39f0368ee616.png)
 
 ## Options
 
@@ -64,7 +41,7 @@ Example:
 import { qrcode } from 'vite-plugin-qrcode';
 
 export default defineConfig({
-	plugins: [qrcode({ filter: (ip) => ip === '192.168.1.1' })]
+	plugins: [qrcode({ filter: (url) => url === 'http://192.168.1.1:4173' })]
 });
 ```
 
