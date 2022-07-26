@@ -1,5 +1,3 @@
-import os from 'os';
-import { AddressInfo } from 'net';
 import type { Plugin, ViteDevServer } from 'vite';
 import qr from 'qrcode-terminal';
 
@@ -26,13 +24,19 @@ export function qrcode(options: PluginOptions = {}): Plugin {
 }
 
 function logQrcode(server: ViteDevServer, options: PluginOptions) {
-	const networkUrls = getNetworkUrls(server, options);
+	let networkUrls = server.resolvedUrls?.network;
+
+	if (!networkUrls) return;
+
+	if (options.filter) {
+		networkUrls = networkUrls.filter(options.filter);
+	}
 
 	if (networkUrls.length === 0) return;
 
 	const info = server.config.logger.info;
 
-	info('  Visit page on mobile:');
+	info('\n  Visit page on mobile:');
 
 	for (const url of networkUrls) {
 		qr.generate(url, { small: true }, (result) => {
@@ -45,82 +49,18 @@ function cyan(str: string): string {
 	return `\x1b[36m${str}\x1b[0m`;
 }
 
-// Referenced from https://github.com/vitejs/vite/blob/77447496704e61cdb68b5788d8d79f19a2d895f1/packages/vite/src/node/logger.ts#L143
-function getNetworkUrls(server: ViteDevServer, options: PluginOptions): string[] {
-	const address = server.httpServer?.address();
-
-	if (!isAddressInfo(address)) return [];
-
-	const hostname = resolveHostname(server.config.server.host);
-
-	if (hostname.host === '127.0.0.1') return [];
-
-	const protocol = server.config.server.https ? 'https' : 'http';
-	const port = address.port;
-	const base = server.config.base;
-
-	return Object.values(os.networkInterfaces())
-		.flatMap((nInterface) => nInterface ?? [])
-		.filter(
-			(detail) =>
-				detail &&
-				detail.address &&
-				// @ts-ignore node18 returns a number
-				(detail.family === 'IPv4' || detail.family === 4) &&
-				!detail.address.includes('127.0.0.1') &&
-				(!options.filter || options.filter(detail.address))
-		)
-		.map((detail) => `${protocol}://${detail.address}:${port}${base}`);
-}
-
-function isAddressInfo(v: any): v is AddressInfo {
-	return v.address;
-}
-
-// Copied from https://github.com/vitejs/vite/blob/77447496704e61cdb68b5788d8d79f19a2d895f1/packages/vite/src/node/utils.ts#L531
-function resolveHostname(optionsHost: string | boolean | undefined): Hostname {
-	let host: string | undefined;
-	if (optionsHost === undefined || optionsHost === false || optionsHost === 'localhost') {
-		// Use a secure default
-		host = '127.0.0.1';
-	} else if (optionsHost === true) {
-		// If passed --host in the CLI without arguments
-		host = undefined; // undefined typically means 0.0.0.0 or :: (listen on all IPs)
-	} else {
-		host = optionsHost;
-	}
-
-	// Set host name to localhost when possible, unless the user explicitly asked for '127.0.0.1'
-	const name =
-		(optionsHost !== '127.0.0.1' && host === '127.0.0.1') ||
-		host === '0.0.0.0' ||
-		host === '::' ||
-		host === undefined
-			? 'localhost'
-			: host;
-
-	return { host, name };
-}
-
-interface Hostname {
-	// undefined sets the default behaviour of server.listen
-	host: string | undefined;
-	// resolve to localhost when possible
-	name: string;
-}
-
 export interface PluginOptions {
 	/**
 	 * filter list of shown QR codes. Useful if you have multiple interfaces and only need one
 	 *
 	 *  examples:
-	 *    ip => ip.startsWith('192.')
-	 *    ip => !ip.startsWith('172.)
-	 *    ip => ip === '192.168.1.70'
+	 *    url => url.startsWith('http://192.')
+	 *    url => !url.startsWith('http://172.)
+	 *    url => url === 'http://192.168.1.70:4173'
 	 *
-	 * @param ip {string} ip address
+	 * @param url {string} ip address
 	 * @returns {boolean}
 	 */
 	// eslint-disable-next-line no-unused-vars
-	filter?: (ip: string) => boolean;
+	filter?: (url: string) => boolean;
 }
