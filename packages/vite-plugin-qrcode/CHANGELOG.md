@@ -2,7 +2,7 @@
 
 ## 0.2.0
 
-### Minor Changes
+### Major Changes
 
 - Drop node 12 support ([#38](https://github.com/svitejs/vite-plugin-qrcode/pull/38))
 
