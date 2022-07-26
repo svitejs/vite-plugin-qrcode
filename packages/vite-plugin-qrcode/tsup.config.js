@@ -4,5 +4,5 @@ export const tsup = {
 	format: ['esm', 'cjs'],
 	splitting: false,
 	clean: true,
-	target: 'node14.13.1'
+	target: 'node14.18.0'
 };
