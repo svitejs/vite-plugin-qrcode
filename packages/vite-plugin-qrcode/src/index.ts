@@ -54,9 +54,9 @@ export interface PluginOptions {
 	 * filter list of shown QR codes. Useful if you have multiple interfaces and only need one
 	 *
 	 *  examples:
-	 *    ip => ip.startsWith('http://192.')
-	 *    ip => !ip.startsWith('http://172.)
-	 *    ip => ip === 'http://192.168.1.70:4173'
+	 *    url => url.startsWith('http://192.')
+	 *    url => !url.startsWith('http://172.)
+	 *    url => url === 'http://192.168.1.70:4173'
 	 *
 	 * @param url {string} ip address
 	 * @returns {boolean}
