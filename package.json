@@ -21,7 +21,7 @@
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.20.0",
+    "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-html": "^7.1.0",
     "eslint-plugin-markdown": "^3.0.0",
@@ -36,7 +36,7 @@
     "rimraf": "^3.0.2",
     "svelte": "^3.49.0",
     "tsm": "^2.2.2",
-    "tsup": "^6.2.0",
+    "tsup": "^6.2.1",
     "typescript": "^4.7.4"
   },
   "lint-staged": {
