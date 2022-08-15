@@ -15,13 +15,13 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.24.2",
+    "@changesets/cli": "^2.24.3",
     "@svitejs/changesets-changelog-github-compact": "^0.1.1",
     "@types/node": "^18.6.1",
-    "@typescript-eslint/eslint-plugin": "^5.32.0",
-    "@typescript-eslint/parser": "^5.32.0",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.21.0",
+    "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-html": "^7.1.0",
     "eslint-plugin-markdown": "^3.0.0",
@@ -36,7 +36,7 @@
     "rimraf": "^3.0.2",
     "svelte": "^3.49.0",
     "tsm": "^2.2.2",
-    "tsup": "^6.2.1",
+    "tsup": "^6.2.2",
     "typescript": "^4.7.4"
   },
   "lint-staged": {
