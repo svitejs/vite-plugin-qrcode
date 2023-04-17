@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@sveltejs/kit": "^1.15.2",
+    "@sveltejs/kit": "^1.15.5",
     "svelte": "^3.58.0",
     "vite": "^4.2.1",
     "vite-plugin-qrcode": "workspace:*"
