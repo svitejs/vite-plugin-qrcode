@@ -48,5 +48,10 @@
   "packageManager": "pnpm@7.18.2",
   "engines": {
     "node": "^14.18.0 || ^16.0.0 || >=18"
+  },
+  "pnpm": {
+    "overrides": {
+      "semver@<7.5.2": ">=7.5.2"
+    }
   }
 }
