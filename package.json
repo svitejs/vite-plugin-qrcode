@@ -34,7 +34,7 @@
     "prettier": "^2.8.8",
     "prettier-plugin-svelte": "^2.10.1",
     "rimraf": "^5.0.1",
-    "svelte": "^3.59.2",
+    "svelte": "^4.0.0",
     "tsm": "^2.3.0",
     "tsup": "^7.1.0",
     "typescript": "^5.1.3"
