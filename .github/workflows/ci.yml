@@ -62,7 +62,14 @@ jobs:
             os: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - name: install pnpm (node 14, pnpm 7)
+        if: matrix.node == 14
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - name: install pnpm
+        if: matrix.node == 14
+        uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
