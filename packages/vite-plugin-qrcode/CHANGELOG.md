@@ -1,5 +1,11 @@
 # vite-plugin-qrcode
 
+## 0.2.2
+
+### Patch Changes
+
+- Log qrcode in preview server for Vite 4.3.0 and above ([#112](https://github.com/svitejs/vite-plugin-qrcode/pull/112))
+
 ## 0.2.1
 
 ### Patch Changes
