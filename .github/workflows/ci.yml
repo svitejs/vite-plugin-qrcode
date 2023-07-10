@@ -75,7 +75,12 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
+      - name: install (node 14, pnpm 7)
+        if: matrix.node == 14
+        run: |
+          pnpm install --no-frozen-lockfile --prefer-offline --ignore-scripts
       - name: install
+        if: matrix.node != 14
         run: |
           pnpm install --frozen-lockfile --prefer-offline --ignore-scripts
       - name: build
