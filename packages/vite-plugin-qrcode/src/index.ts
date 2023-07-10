@@ -1,4 +1,4 @@
-import type { Plugin, ViteDevServer } from 'vite';
+import type { Plugin, PreviewServerForHook, ViteDevServer } from 'vite';
 import qr from 'qrcode-terminal';
 
 export function qrcode(options: PluginOptions = {}): Plugin {
@@ -19,11 +19,20 @@ export function qrcode(options: PluginOptions = {}): Plugin {
 				// eslint-disable-next-line prefer-rest-params
 				return _listen.apply(this, arguments);
 			};
+		},
+		configurePreviewServer(server) {
+			// Preview server has no restarts, so we can hook directly
+			// The `resolvedUrls` only exist in Vite >=4.3.0, so add a guard to prevent unnecessary hook
+			if ('resolvedUrls' in server) {
+				server.httpServer?.on('listening', () => {
+					setTimeout(() => logQrcode(server, options), 0);
+				});
+			}
 		}
 	};
 }
 
-function logQrcode(server: ViteDevServer, options: PluginOptions) {
+function logQrcode(server: ViteDevServer | PreviewServerForHook, options: PluginOptions) {
 	let networkUrls = server.resolvedUrls?.network;
 
 	if (!networkUrls) return;
