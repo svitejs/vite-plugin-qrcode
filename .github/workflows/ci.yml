@@ -23,7 +23,7 @@ jobs:
     outputs:
       build_successful: ${{ steps.build.outcome == 'success' }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
@@ -61,7 +61,7 @@ jobs:
           - node: 18
             os: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: install pnpm (node 14, pnpm 7)
         if: matrix.node == 14
         uses: pnpm/action-setup@v2
