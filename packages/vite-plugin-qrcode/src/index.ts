@@ -1,4 +1,4 @@
-import type { Plugin, PreviewServerForHook, ViteDevServer } from 'vite';
+import type { Plugin, PreviewServer, ViteDevServer } from 'vite';
 import qr from 'qrcode-terminal';
 
 export function qrcode(options: PluginOptions = {}): Plugin {
@@ -32,7 +32,7 @@ export function qrcode(options: PluginOptions = {}): Plugin {
 	};
 }
 
-function logQrcode(server: ViteDevServer | PreviewServerForHook, options: PluginOptions) {
+function logQrcode(server: ViteDevServer | PreviewServer, options: PluginOptions) {
 	let networkUrls = server.resolvedUrls?.network;
 
 	if (!networkUrls) return;
