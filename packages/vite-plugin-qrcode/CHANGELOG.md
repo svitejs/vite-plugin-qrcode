@@ -1,5 +1,11 @@
 # vite-plugin-qrcode
 
+## 0.3.0
+
+### Minor Changes
+
+- Support Vite 7 peer dependency ([#142](https://github.com/svitejs/vite-plugin-qrcode/pull/142))
+
 ## 0.2.4
 
 ### Patch Changes
