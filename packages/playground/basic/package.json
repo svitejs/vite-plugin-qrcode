@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "catalog:",
+    "vite": "^5.0.6",
     "vite-plugin-qrcode": "workspace:*"
   }
 }

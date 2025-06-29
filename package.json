@@ -37,8 +37,7 @@
     "svelte": "^5.34.9",
     "tsm": "^2.3.0",
     "tsup": "^8.5.0",
-    "typescript": "^5.8.3",
-    "vite": "catalog:"
+    "typescript": "^5.8.3"
   },
   "lint-staged": {
     "*.{js,ts,svelte,html,md,svx}": "eslint --fix",
