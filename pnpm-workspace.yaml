@@ -1,3 +1,6 @@
 packages:
-  - 'packages/*'
-  - 'packages/playground/*'
+  - packages/*
+  - packages/playground/*
+
+catalog:
+  vite: ^7.0.0
