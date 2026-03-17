@@ -3,7 +3,6 @@ module.exports = {
 	extends: [
 		'eslint:recommended',
 		'plugin:node/recommended',
-		'plugin:svelte/recommended',
 		'plugin:@typescript-eslint/eslint-recommended',
 		'prettier'
 	],
@@ -15,8 +14,7 @@ module.exports = {
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		sourceType: 'module',
-		ecmaVersion: 2020,
-		extraFileExtensions: ['.svelte']
+		ecmaVersion: 2020
 	},
 	rules: {
 		'no-console': 'off',
@@ -41,25 +39,7 @@ module.exports = {
 			}
 		},
 		{
-			files: ['**/*.svelte'],
-			env: {
-				es6: true,
-				browser: true,
-				node: false
-			},
-			parser: 'svelte-eslint-parser',
-			parserOptions: {
-				parser: '@typescript-eslint/parser'
-			},
-			rules: {
-				'import/first': 'off',
-				'import/no-duplicates': 'off',
-				'import/no-mutable-exports': 'off',
-				'import/no-unresolved': 'off'
-			}
-		},
-		{
-			files: ['**/*.svx', '**/*.md'],
+			files: ['**/*.md'],
 			processor: 'markdown/markdown',
 			rules: {
 				'no-undef': 'off',
@@ -74,7 +54,7 @@ module.exports = {
 			}
 		},
 		{
-			files: ['**/*.svx/*.**', '**/*.md/*.**'],
+			files: ['**/*.md/*.**'],
 			rules: {
 				'no-undef': 'off',
 				'no-unused-vars': 'off',
