@@ -2,49 +2,53 @@
   "name": "vite-plugin-qrcode-monorepo",
   "private": true,
   "license": "MIT",
+  "type": "module",
   "scripts": {
-    "dev": "pnpm --dir packages/vite-plugin-qrcode dev",
-    "build": "pnpm --dir packages/vite-plugin-qrcode build",
-    "test": "pnpm -r test --workspace-concurrency=1",
-    "lint": "eslint --cache --ignore-path .gitignore '**/*.{js,ts,html,md}'",
-    "lint:fix": "pnpm run lint --fix",
-    "format": "prettier --cache --ignore-path .gitignore '**/*.{css,html,js,ts,md}' --check",
-    "format:fix": "pnpm run format --write",
-    "fixup": "run-s lint:fix format:fix",
-    "release": "pnpm run build && pnpm changeset publish",
-    "prepare": "husky install"
+    "test": "pnpm -r --workspace-concurrency=1 test",
+    "check": "run-p -c check:*",
+    "check:audit": "pnpm audit --prod",
+    "check:publint": "pnpm --filter \"./packages/*\" --parallel check:publint",
+    "check:types": "pnpm --filter \"./packages/*\" --parallel check:types",
+    "check:lint": "eslint --cache '**/*.{js,ts,md}'",
+    "check:format": "prettier --cache --ignore-path .gitignore . --ignore-unknown --check",
+    "lint": "pnpm check:lint --fix",
+    "format": "pnpm check:format --write",
+    "fixup": "run-s lint format",
+    "release": "pnpm changeset publish",
+    "generate:types": "pnpm --filter \"./packages/*\" --parallel generate:types",
+    "generate:types-staged": "pnpm generate:types && :",
+    "prepare": "husky"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
-    "@svitejs/changesets-changelog-github-compact": "^1.1.0",
-    "@types/node": "^20.10.4",
+    "@changesets/cli": "^2.30.0",
+    "@eslint/js": "^10.0.1",
+    "@svitejs/changesets-changelog-github-compact": "^1.2.0",
+    "@types/node": "^20.19.37",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
-    "cross-env": "^7.0.3",
-    "eslint": "^8.55.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-html": "^7.1.0",
-    "eslint-plugin-markdown": "^3.0.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^5.0.1",
-    "husky": "^8.0.3",
-    "lint-staged": "^15.2.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^3.1.0",
-    "rimraf": "^5.0.5",
-    "tsm": "^2.3.0",
-    "tsup": "^7.3.0",
-    "typescript": "^5.2.2"
+    "cross-env": "^10.1.0",
+    "dts-buddy": "^0.7.0",
+    "eslint": "^10.1.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-n": "^17.24.0",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "npm-run-all2": "^8.0.4",
+    "prettier": "^3.8.1",
+    "publint": "^0.3.18",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.57.2"
   },
   "lint-staged": {
-    "*.{js,ts,html,md}": "eslint --fix",
-    "*.{css,html,js,ts,md}": [
-      "prettier --write"
-    ]
+    "*.{js,ts,md}": "eslint --cache --fix",
+    "*": "prettier --cache --ignore-path .gitignore --ignore-unknown --write",
+    "packages/*/src/**/*": "pnpm generate:types-staged"
   },
-  "packageManager": "pnpm@8.6.7",
+  "packageManager": "pnpm@10.32.1",
   "engines": {
-    "node": "^14.18.0 || ^16.0.0 || >=18"
+    "node": "^20.19.0 || ^22.12.0 || >=24"
   },
   "pnpm": {
     "overrides": {

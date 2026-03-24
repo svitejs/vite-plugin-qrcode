@@ -15,9 +15,9 @@ npm install --save-dev vite-plugin-qrcode
 import { qrcode } from 'vite-plugin-qrcode';
 
 export default defineConfig({
-	plugins: [
-		qrcode() // only applies in dev mode
-	]
+  plugins: [
+    qrcode() // only applies in dev mode
+  ]
 });
 ```
 
@@ -41,7 +41,7 @@ Example:
 import { qrcode } from 'vite-plugin-qrcode';
 
 export default defineConfig({
-	plugins: [qrcode({ filter: (url) => url === 'http://192.168.1.1:4173' })]
+  plugins: [qrcode({ filter: (url) => url === 'http://192.168.1.1:4173' })]
 });
 ```
 

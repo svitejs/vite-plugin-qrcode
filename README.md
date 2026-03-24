@@ -19,9 +19,9 @@ npm install --save-dev vite-plugin-qrcode
 import { qrcode } from 'vite-plugin-qrcode';
 
 export default defineConfig({
-	plugins: [
-		qrcode() // only applies in dev mode
-	]
+  plugins: [
+    qrcode() // only applies in dev mode
+  ]
 });
 ```
 

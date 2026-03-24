@@ -1,4 +1,3 @@
-# build and test on linux, windows, mac with node 16, 18
 name: CI
 
 on:
@@ -9,68 +8,62 @@ on:
     branches:
       - main
 
+# cancel in-progress runs on new commits to same PR (gitub.event.number)
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
+  cancel-in-progress: true
+
+# use min permissions
+permissions:
+  contents: read # to fetch code (actions/checkout)
+
 jobs:
-  # "checks" job runs on linux + node16 only and checks that install, build, lint and audit work
-  # it also primes the pnpm store cache for linux, important for downstream tests
-  checks:
+  ci:
     timeout-minutes: 5
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         # pseudo-matrix for convenience, NEVER use more than a single combination
-        node: [16]
+        node: [24]
         os: [ubuntu-latest]
-    outputs:
-      build_successful: ${{ steps.build.outcome == 'success' }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: 'false'
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
           node-version: ${{ matrix.node }}
-          cache: 'pnpm'
-          cache-dependency-path: '**/pnpm-lock.yaml'
-      - name: install
+          package-manager-cache: false # pnpm is not installed yet
+      - name: install pnpm
+        shell: bash
         run: |
-          pnpm install --frozen-lockfile --prefer-offline --ignore-scripts
-      - name: build
-        id: build
-        run: pnpm run build
+          PNPM_VER=$(jq -r '.packageManager | if .[0:5] == "pnpm@" then .[5:] else "packageManager in package.json does not start with pnpm@\n" | halt_error(1)  end' package.json)
+          echo installing pnpm version $PNPM_VER
+          npm i -g pnpm@$PNPM_VER
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: ${{ matrix.node }}
+          package-manager-cache: true # caches pnpm via packageManager field in package.json
+          cache: 'pnpm'
+      - name: install
+        run: pnpm install --frozen-lockfile --prefer-offline --ignore-scripts
+      - name: format
+        run: pnpm check:format
       - name: lint
         if: (${{ success() }} || ${{ failure() }})
-        run: pnpm run lint
+        run: pnpm check:lint
+      - name: types
+        if: (${{ success() }} || ${{ failure() }})
+        run: pnpm check:types
       - name: audit
         if: (${{ success() }} || ${{ failure() }})
-        run: pnpm audit
-
-  # this is the test matrix, it runs with node16 on linux,windows,macos + node18 on linux
-  # it is skipped if the build step of the checks job wasn't successful (still runs if lint or audit fail)
-  test:
-    needs: checks
-    if: (${{ success() }} || ${{ failure() }}) && (${{ needs.checks.output.build_successful }})
-    timeout-minutes: 10
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        node: [16]
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        include:
-          - node: 18
-            os: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: install pnpm
-        uses: pnpm/action-setup@v2
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-          cache: 'pnpm'
-          cache-dependency-path: '**/pnpm-lock.yaml'
-      - name: install
-        run: |
-          pnpm install --frozen-lockfile --prefer-offline --ignore-scripts
-      - name: build
-        run: pnpm run build
-      - name: run tests
+        run: pnpm check:audit
+      - name: publint
+        if: (${{ success() }} || ${{ failure() }})
+        run: pnpm check:publint
+      - name: generated types are up to date
+        if: (${{ success() }} || ${{ failure() }})
+        run: pnpm generate:types && [ "`git status --porcelain=v1`" == "" ]
+      - name: tests
+        if: (${{ success() }} || ${{ failure() }})
         run: pnpm test

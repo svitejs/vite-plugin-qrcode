@@ -1,3 +1,7 @@
 packages:
   - 'packages/*'
   - 'packages/playground/*'
+
+#cli output
+aggregateOutput: true
+reporter: append-only
