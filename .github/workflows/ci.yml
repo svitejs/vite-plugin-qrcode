@@ -50,20 +50,20 @@ jobs:
       - name: format
         run: pnpm check:format
       - name: lint
-        if: (${{ success() }} || ${{ failure() }})
+        if: ${{ success() || failure() }}
         run: pnpm check:lint
       - name: types
-        if: (${{ success() }} || ${{ failure() }})
+        if: ${{ success() || failure() }}
         run: pnpm check:types
       - name: audit
-        if: (${{ success() }} || ${{ failure() }})
+        if: ${{ success() || failure() }}
         run: pnpm check:audit
       - name: publint
-        if: (${{ success() }} || ${{ failure() }})
+        if: ${{ success() || failure() }}
         run: pnpm check:publint
       - name: generated types are up to date
-        if: (${{ success() }} || ${{ failure() }})
+        if: ${{ success() || failure() }}
         run: pnpm generate:types && [ "`git status --porcelain=v1`" == "" ]
       - name: tests
-        if: (${{ success() }} || ${{ failure() }})
+        if: ${{ success() || failure() }}
         run: pnpm test
