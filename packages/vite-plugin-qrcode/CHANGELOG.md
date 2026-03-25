@@ -1,5 +1,20 @@
 # vite-plugin-qrcode
 
+## 0.4.0
+### Minor Changes
+
+
+- replace qrcode-terminal with uqr ([#145](https://github.com/svitejs/vite-plugin-qrcode/pull/145))
+
+
+- Support Vite 8 and higher in peer dependency ([#145](https://github.com/svitejs/vite-plugin-qrcode/pull/145))
+
+
+### Patch Changes
+
+
+- refactor plugin to unbundled esm js ([#145](https://github.com/svitejs/vite-plugin-qrcode/pull/145))
+
 ## 0.3.0
 
 ### Minor Changes
