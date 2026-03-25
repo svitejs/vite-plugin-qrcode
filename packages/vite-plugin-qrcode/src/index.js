@@ -1,4 +1,4 @@
-import qr from 'qrcode-terminal';
+import { renderUnicodeCompact } from 'uqr';
 
 /**
  *
@@ -53,9 +53,8 @@ function logQrcode(server, options) {
 	info('\n  Visit page on mobile:');
 
 	for (const url of networkUrls) {
-		qr.generate(url, { small: true }, (result) => {
-			info(`  ${cyan(url)}\n  ${result.replace(/\n/g, '\n  ')}`);
-		});
+		const qr = renderUnicodeCompact(url);
+		info(`  ${cyan(url)}\n  ${qr.replace(/\n/g, '\n  ')}`);
 	}
 }
 
