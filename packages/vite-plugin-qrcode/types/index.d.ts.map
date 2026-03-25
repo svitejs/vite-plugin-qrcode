@@ -1,0 +1,15 @@
+{
+	"version": 3,
+	"file": "index.d.ts",
+	"names": [
+		"PluginOptions"
+	],
+	"sources": [
+		"../src/public.d.ts"
+	],
+	"sourcesContent": [
+		null
+	],
+	"mappings": ";kBAAiBA,aAAaA",
+	"ignoreList": []
+}
