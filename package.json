@@ -23,7 +23,7 @@
     "@changesets/cli": "^2.30.0",
     "@eslint/js": "^10.0.1",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
-    "@types/node": "^20.19.37",
+    "@types/node": "^25.5.0",
     "dts-buddy": "^0.7.0",
     "eslint": "^10.1.0",
     "eslint-config-prettier": "^10.1.8",
@@ -45,10 +45,5 @@
   "packageManager": "pnpm@10.32.1",
   "engines": {
     "node": "^20.19.0 || ^22.12.0 || >=24"
-  },
-  "pnpm": {
-    "overrides": {
-      "semver@<7.5.2": ">=7.5.2"
-    }
   }
 }
