@@ -13,6 +13,11 @@ declare module 'vite-plugin-qrcode' {
 
 		filter?: (url: string) => boolean;
 	}
+	/**
+	 *
+	 * @returns vite-plugin-qrcode
+	 */
+	export function qrcode(options?: Partial<PluginOptions>): import("vite").Plugin;
 
 	export {};
 }
