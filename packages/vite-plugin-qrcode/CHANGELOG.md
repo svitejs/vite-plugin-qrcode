@@ -1,5 +1,11 @@
 # vite-plugin-qrcode
 
+## 0.4.1
+### Patch Changes
+
+
+- fix(types): export plugin initializer function type ([#148](https://github.com/svitejs/vite-plugin-qrcode/pull/148))
+
 ## 0.4.0
 ### Minor Changes
 
